@@ -1,8 +1,3 @@
-
-  "name": "Adidas: Vitrine das Três Listras",
-  "description": "Catálogo digital exclusivo Adidas com painel de gestão para controle de estoque e vitrine premium.",
-  "requestFramePermissions": 
-
 {
   "name": "react-example",
   "private": true,
