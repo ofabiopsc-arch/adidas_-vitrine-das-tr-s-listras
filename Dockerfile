@@ -1,9 +1,3 @@
-node_modules
-dist
-catalog.db
-.env
-.git
-
 # URL do Banco de Dados PostgreSQL (Supabase/Neon)
 DATABASE_URL=
 
