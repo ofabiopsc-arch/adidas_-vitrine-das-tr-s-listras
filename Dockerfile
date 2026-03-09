@@ -1,4 +1,10 @@
 {
+  "name": "Adidas: Vitrine das Três Listras",
+  "description": "Catálogo digital exclusivo Adidas com painel de gestão para controle de estoque e vitrine premium.",
+  "requestFramePermissions": []
+}
+
+{
   "name": "react-example",
   "private": true,
   "version": "0.0.0",
@@ -5541,22 +5547,30 @@ View your app in AI Studio: https://ai.studio/apps/308dd768-f864-492a-9899-5b162
 3. Run the app:
    `npm run dev`
 
-# Instruções de Deploy no Render
+# 🚀 Guia de Deploy - Adidas Vitrine
 
-Para colocar seu site no ar, siga estes passos:
+Siga estes passos exatamente para colocar seu site no ar:
 
-1. **Exportar para o GitHub:** Clique no botão "Export to GitHub" no AI Studio.
-2. **No Render:**
-   - Crie um novo **Web Service**.
-   - Conecte seu repositório do GitHub.
-   - O Render deve detectar o arquivo `render.yaml` ou o `Dockerfile` automaticamente.
-   - Se ele perguntar o **Runtime**, escolha **Docker**.
-3. **Variáveis de Ambiente:**
-   - No Render, vá em **Settings** -> **Environment Variables**.
-   - Adicione `PORT` com o valor `3000`.
-   - Adicione `GEMINI_API_KEY` com a sua chave (se estiver usando IA).
+### 1. Exportar para o GitHub
+- Clique no botão **"Export to GitHub"** aqui no AI Studio.
+- Verifique no seu GitHub se os arquivos `Dockerfile`, `.dockerignore` e `render.yaml` apareceram lá.
 
-Se o deploy falhar, verifique a aba **Logs** no Render para ver a mensagem de erro.
+### 2. Configurar o Render
+- No painel do Render, crie um novo **Web Service**.
+- Conecte seu repositório.
+- **IMPORTANTE:** Se o Render perguntar o "Runtime", escolha **Docker**.
+- Ele deve ler o arquivo `Dockerfile` automaticamente.
+
+### 3. Variáveis de Ambiente (Opcional)
+- Se você usa banco de dados externo ou IA, vá em **Settings** -> **Environment Variables** no Render e adicione:
+  - `DATABASE_URL`: (Sua URL do Postgres, se tiver)
+  - `GEMINI_API_KEY`: (Sua chave da Google se usar IA)
+  - `PORT`: `3000`
+
+### ⚠️ AVISO IMPORTANTE
+**NÃO DEIXE O NAVEGADOR TRADUZIR A PÁGINA** ao copiar códigos ou configurar o GitHub. A tradução automática estraga o código (ex: muda `true` para `verdadeiro`), o que faz o deploy falhar.
+
+Se aparecer o erro "unknown instruction: {", significa que o seu arquivo `Dockerfile` no GitHub está com o conteúdo errado (provavelmente o conteúdo do package.json). Copie o conteúdo do `Dockerfile` novamente em inglês.
 
 # 🚀 Guia de Lançamento: Vitrine das Três Listras
 
@@ -5959,9 +5973,3 @@ coverage/
   </body>
 </html>
 
-
-{
-  "name": "Adidas: Vitrine das Três Listras",
-  "description": "Catálogo digital exclusivo Adidas com painel de gestão para controle de estoque e vitrine premium.",
-  "requestFramePermissions": []
-}
