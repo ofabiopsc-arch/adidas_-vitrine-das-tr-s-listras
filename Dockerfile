@@ -1,3 +1,48 @@
+node_modules
+dist
+catalog.db
+.env
+.git
+
+# URL do Banco de Dados PostgreSQL (Supabase/Neon)
+DATABASE_URL=
+
+# Credenciais do Painel Admin (Opcional - Padrão: admin/admin123)
+ADMIN_USER=admin
+ADMIN_PASS=admin123
+
+# Porta do Servidor (Opcional - Padrão: 3000)
+PORT=3000
+
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Google AI Studio App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
+
+{
+  "name": "Adidas: Vitrine das Três Listras",
+  "description": "Catálogo digital exclusivo Adidas com painel de gestão para controle de estoque e vitrine premium.",
+  "requestFramePermissions": []
+}
+
 {
   "name": "react-example",
   "private": true,
@@ -5520,26 +5565,32 @@
   }
 }
 
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Adidas Vitrine - Deploy no Render
 
-# Run and deploy your AI Studio app
+Este projeto está configurado para rodar no **Render** usando **Docker**.
 
-This contains everything you need to run your app locally.
+## 🚀 Como fazer o Deploy
 
-View your app in AI Studio: https://ai.studio/apps/308dd768-f864-492a-9899-5b16217df5a5
+1. **GitHub:** Clique em "Export to GitHub" no AI Studio.
+2. **Render:**
+   - Crie um novo **Web Service**.
+   - Conecte seu repositório do GitHub.
+   - O Render deve detectar automaticamente o `render.yaml` e o `Dockerfile`.
+   - Se perguntar, escolha o **Runtime: Docker**.
 
-## Run Locally
+## 📁 Estrutura de Arquivos para o Servidor
 
-**Prerequisites:**  Node.js
+- `Dockerfile`: Configuração do container.
+- `render.yaml`: Configuração automática do serviço no Render.
+- `package.json`: Gerenciamento de scripts e dependências.
+- `server.ts`: Servidor Express que serve o frontend e a API.
 
+## 🛠️ Variáveis de Ambiente (Opcional)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Se você quiser usar um banco de dados externo (PostgreSQL), adicione a variável `DATABASE_URL` no painel do Render. Caso contrário, ele usará o SQLite localmente (os dados serão perdidos se o servidor reiniciar no plano gratuito).
+
+---
+*Gerado automaticamente para deploy.*
 
 # 🚀 Guia de Deploy - Adidas Vitrine
 
@@ -5646,11 +5697,18 @@ services:
     name: adidas-vitrine
     runtime: docker
     plan: free
+    region: ohio
     envVars:
       - key: PORT
         value: 3000
       - key: NODE_ENV
         value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: ADMIN_USER
+        value: admin
+      - key: ADMIN_PASS
+        generateValue: true
 
 import express from "express";
 import { createServer as createViteServer } from "vite";
@@ -5928,42 +5986,3 @@ export default defineConfig(({mode}) => {
     },
   };
 });
-
-node_modules
-dist
-catalog.db
-.env
-.git
-
-# URL do Banco de Dados PostgreSQL (Supabase/Neon)
-DATABASE_URL=
-
-# Credenciais do Painel Admin (Opcional - Padrão: admin/admin123)
-ADMIN_USER=admin
-ADMIN_PASS=admin123
-
-# Porta do Servidor (Opcional - Padrão: 3000)
-PORT=3000
-
-node_modules/
-build/
-dist/
-coverage/
-.DS_Store
-*.log
-.env*
-!.env.example
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
-
